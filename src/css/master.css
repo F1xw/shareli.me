@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@300&display=swap');
+
+*:focus {
+    outline: none;
+}
+
+input, .rpl-primary {
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+}
+
+input[type="text"]:focus, input[type="password"]:focus, input[type="search"]:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+
+html, body {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    height: 15%;
+}
+
+.content {
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+}
+
+@media (max-width: 992px) {
+    .footer {
+        display: none;
+    }
+}
+
+.account-name:hover {
+    background-color: #fff !important;
+}
+
+.dropdown-menu {
+    border-radius: 0 !important;
+}
+
+.account-name:active {
+    background-color: #fff !important;
+    color: #212529;
+}
+
+.uri-input {
+    border: none;
+    border-bottom: 0.5px solid #007bff;
+    border-radius: 0;
+    background-color: #f8f9fa;
+}
+
+.description {
+    text-align: center;
+}
+
+.description-header {
+    color: var(--primary);
+}
+
+.description-text {
+    color: rgb(70, 69, 69);
+}
+
+.upload-file, .download-file {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.upload-button, .download-button {
+    width: 300px;
+    height: 75px;
+}
+
+.upload-progress-container {
+    width: 300px;
+    height: 75px;
+    display: none;
+    background-color: #3793f586;
+    border-radius: 5px;
+}
+
+.upload-progress {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    background-color: #007bff;
+    color: white;
+    width: 0%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+
+.file-upload {
+    display: none;
+}
+
+.file-uri {
+    display: none;
+}
+
+#file-uri {
+    width: 300px;
+    height: 75px;
+    border-radius: 5px;
+    border: 1px solid #007bff;
+    text-align: center;
+    color: rgb(56, 56, 56);
+    font-size: 1.2rem;
+	font-family: 'Inconsolata', monospace;
+}
+
+.sub-action {
+    text-align: center;
+}
+
+.cancle-upload-button {
+    display: none;
+    padding: 0;
+    margin: 0;
+    min-height: 0 !important;
+    min-width: 0 !important;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: transparent !important;
+}
+
+.cancle-upload-button:hover {
+    background-color: rgba(173, 173, 173, 0.356) !important;
+}
+
+.posssl {
+    position: absolute;
+    bottom: 15px;
+    left: 10px;
+    text-align: right;
+}
+
+.posssl a{
+    float: right;
+}

@@ -1,0 +1,26 @@
+.err {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.err-header {
+    color: var(--primary);
+    font-size: 175px;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: bold;
+    margin-bottom: -15px;
+    background: rgb(33,100,184);
+    background: linear-gradient(135deg, rgb(15, 46, 85) 0%, rgb(10, 191, 204) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+}
+
+.err-header i {
+    font-size: 115px;
+}
+
+.err-text {
+    color: rgb(70, 69, 69);
+    font-size: 20px;
+}
