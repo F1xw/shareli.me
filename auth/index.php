@@ -92,16 +92,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link rel="stylesheet" href="/src/ripple-btns/ripple.css">
         <link rel="stylesheet" href="/src/css/toast.css">
-        <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js" integrity="sha384-FzT3vTVGXqf7wRfy8k4BiyzvbNfeYjK+frTVqZeNDFl8woCbF0CYG6g2fMEFFo/i" crossorigin="anonymous"></script>
-        <script src="/src/ripple-btns/ripple.js"></script>
-        <script src="/src/js/toast.js"></script>
         <title>shareli.me - Log In</title>
     </head>
-    <body style="background-image: url('assets/img/network-4851119_1920.jpg');">
+    <body>
         <div class="login-card">
             <img class="profile-img-card" src="assets/img/avatar_2x.png">
             <p class="profile-name-card"></p>
@@ -115,9 +108,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <label class="form-check-label" for="formCheck-1">Remember me</label>
                     </div>
                 </div>
-                <button class="btn btn-primary btn-block btn-lg rpl-btn rpl-rounded login-submit" type="submit" style="margin-top:12px;margin-left:0px;height:50px;">Submit &nbsp;<i class="fas fa-arrow-right"></i></button>
+                <button id="auth-submit" class="btn btn-primary btn-block btn-lg rpl-btn rpl-rounded login-submit" onclick="handleEvent();" style="margin-top:12px;margin-left:0px;height:50px;">Submit &nbsp;<i class="fas fa-arrow-right"></i></button>
             </form>
             <a class="forgot-password" href="#">Forgot your password?</a>
         </div>
+        <canvas id="c"></canvas>
+        <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/1.0.0/anime.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js" integrity="sha384-FzT3vTVGXqf7wRfy8k4BiyzvbNfeYjK+frTVqZeNDFl8woCbF0CYG6g2fMEFFo/i" crossorigin="anonymous"></script>
+        <script src="/src/ripple-btns/ripple.js"></script>
+        <script src="/src/js/toast.js"></script>
+        <script src="assets/js/bg.js"></script>
+        <script src="assets/js/login.js"></script>
     </body>
 </html>
