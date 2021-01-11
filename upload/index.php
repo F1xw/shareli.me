@@ -14,32 +14,32 @@ function generateRandomString($length) {
     return $randomString;
 }
 
- if(isset($_SESSION['loggedin']) && $_SESSION['username'] !== '') {
-     $loggedin = true;
-     $username = $_SESSION['username'];
-     $license = $_SESSION['license'];
-     $checkLicense = file_get_contents('https://shareli.me/auth/validate/?license='.$license);
+//  if(isset($_SESSION['loggedin']) && $_SESSION['username'] !== '') {
+//      $loggedin = true;
+//      $username = $_SESSION['username'];
+//      $license = $_SESSION['license'];
+//      $checkLicense = file_get_contents('https://shareli.me/auth/validate/?license='.$license);
 
-     if ($checkLicense == 'valid') {
-         if ($_FILES['file']['size'] > 5000000000) {
-             exit;
-         }else{
-             $expiration = date('Y-m-d H:i:s', strtotime('+30 day', time())); 
-         }
-     }else{
-         if ($_FILES['file']['size'] > 1000000000) {
-             exit;
-         }else{
-             $expiration = date('Y-m-d H:i:s', strtotime('+1 day', time())); 
-         }
-     }
- }else{
-     if ($_FILES['file']['size'] > 1000000000) {
-         exit;
-     }else{
-         $expiration = date('Y-m-d H:i:s', strtotime('+1 day', time())); 
-     }
-}
+//      if ($checkLicense == 'valid') {
+//          if ($_FILES['file']['size'] > 5000000000) {
+//              exit;
+//          }else{
+//              $expiration = date('Y-m-d H:i:s', strtotime('+30 day', time())); 
+//          }
+//      }else{
+//          if ($_FILES['file']['size'] > 1000000000) {
+//              exit;
+//          }else{
+//              $expiration = date('Y-m-d H:i:s', strtotime('+1 day', time())); 
+//          }
+//      }
+//  }else{
+//      if ($_FILES['file']['size'] > 1000000000) {
+//          exit;
+//      }else{
+//          $expiration = date('Y-m-d H:i:s', strtotime('+1 day', time())); 
+//      }
+// }
 
 $expiration = date('Y-m-d H:i:s', strtotime('+1 day', time())); 
 $uri = generateRandomString(6);
@@ -52,9 +52,8 @@ if ($db_link = mysqli_connect('yeetlabs.de', 'shareli_me', 'Vrc41_z9', 'shareli_
     $file_basename = basename($_FILES['file']['name']);
     $upload_ip = $_SERVER['REMOTE_ADDR'];
 
-    if(rename($_FILES['file']['tmp_name'], $target_path)){
-        $uri_available = false;
-            
+    if(move_uploaded_file($_FILES['file']['tmp_name'], $target_path)){
+        $uri_available = false; 
             while ($uri_available == false) {
                 if ($exec = mysqli_query($db_link, $query)) {
                     if (mysqli_num_rows($exec) > 0) {
