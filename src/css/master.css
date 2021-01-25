@@ -26,7 +26,7 @@
     }
 
     .file-qr {
-        filter: invert(100%);
+        filter: invert(85%);
     }
 
     .posssl a {
@@ -44,11 +44,11 @@ input, .rpl-primary {
     padding: .375rem .75rem;
 }
 
-input[type="text"], input[type="password"], input[type="search"] {
+.uri-input {
     color: var(--text-secondary);
 }
 
-input[type="text"]:focus, input[type="password"]:focus, input[type="search"]:focus {
+.uri-input:focus {
     color: var(--text-main);
     background-color: var(--bg-main);
     border-color: var(--col-border);
@@ -56,7 +56,7 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="search"]:foc
     box-shadow: 0 0 0 0.2rem var(--col-shadow);
 }
 
-input[type="text"]::placeholder, input[type="password"]::placeholder, input[type="search"]::placeholder {
+.uri-input::placeholder {
     color: var(--text-secondary);
 }
 
@@ -197,9 +197,10 @@ body.drag .upload-button {
     width: 300px;
     height: 75px;
     border-radius: 5px;
-    border: 1px solid var(--col-main);
+    border: 3px solid var(--col-main);
+    background-color: var(--bg-main);
     text-align: center;
-    color: var(--col-secondary);
+    color: var(--text-main);
     font-size: 1.2rem;
 	font-family: 'Inconsolata', monospace;
 }
