@@ -2,12 +2,12 @@
 
 :root {
     --bg-main: #fff;
-    --bg-light: rgb(184, 184, 184);
+    --bg-light: rgb(238, 238, 238);
     --bg-secondary: #007bff;
     --col-main: #007bff;
     --col-secondary: #fff;
     --text-main: #007bff;
-    --text-secondary: #fff;
+    --text-secondary: rgb(165, 165, 165);
     --col-border: #80bdff;
     --col-shadow: rgba(0,123,255,.25);
 }
