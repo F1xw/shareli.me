@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_URI'] !== '/dl/') {
                 $data = mysqli_fetch_assoc($exec);
                 $file_location = $data['file_location'];
                 $file_basename = $data['file_basename'];
-                $dlval = $row['downloads'] + 1;
+                $dlval = $data['downloads'] + 1;
                 $update = "UPDATE files SET downloads = $dlval WHERE uri = '$uri'";
 
                 $uexec = mysqli_query($db_link, $update);
