@@ -20,11 +20,12 @@ if ($_SERVER['REQUEST_URI'] != '/' && $_SERVER['REQUEST_URI'] != '/?' && strpos(
                 $file_name_array = explode('.', $data['file_basename']);
                 $file_name = $file_name_array[0];
                 $file_extension = '.'.$file_name_array[1];
-                if (strlen($file_name) > 15) {
-                    $file_name = substr($file_name, 0, 15).'..';
-                }
                 $file_basename = $file_name.$file_extension;
-                
+                if (strlen($file_name) > 15) {
+                    $file_basename_display = substr($file_name, 0, 15).'..'.$file_extension;
+                }else{
+                    $file_basename_display = $file_basename;
+                }
                 #Include the HTML for viewing files
                 include 'src/html/viewFile.php';
                 

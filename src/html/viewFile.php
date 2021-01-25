@@ -80,14 +80,14 @@ if (isset($data['user']) && $data['user'] !== '') {
     </nav>
     <div class="content">
         <div class="description">
-            <h2 class="descripton-header"><?php echo $file_basename; ?></h2>
+            <h2 class="description-header" title="<?php echo $file_basename; ?>"><?php echo $file_basename_display; ?></h2>
             <p class="description-text">
                     Shared by: 
                     <?php echo $file_user; ?>
 			</p>
         </div>
         <div class="download-file">
-            <button class="download-button rpl-btn rpl-primary rpl-rounded" id="download" onclick="window.open('/dl/?<?php echo $uri; ?>', '_blank');"><i class="fas fa-download"></i>&nbsp;Download</button>
+            <button class="download-button rpl-btn rpl-rounded" id="download" onclick="window.open('/dl/?<?php echo $uri; ?>', '_blank');"><i class="fas fa-download"></i>&nbsp;Download</button>
         </div>
     </div>
     <form action="/files/upload/" method="post" class="upload-form"><input type="file" name="file" class="file-upload"></form>
@@ -101,7 +101,7 @@ if (isset($data['user']) && $data['user'] !== '') {
     </script>
     </div>
     <div class="footer">
-        <p>Copyright &copy; yeetLabs 2020</p>
+        <p>Copyright &copy; Florian Weissmeier 2020</p>
     </div>
 </body>
 </html>

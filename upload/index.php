@@ -1,8 +1,5 @@
 <?php
 
-ini_set('post_max_size', '5G');
-ini_set('upload_max_filesize', '5G');
-
 session_start();
 
 file_get_contents('https://shareli.me/del/');

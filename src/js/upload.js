@@ -1,17 +1,14 @@
 var upload_abort = false
 
-function startUpload() {
-    if($('.file-upload').val()){
+function startUpload(file) {
+    if(file){
         $('.upload-button').hide();
         $('.error-message').hide();
         $('.upload-progress-container').show();
         $('.cancle-upload-button').show();
-        var file = $('.file-upload').get( 0 ).files[0],
-                formData = new FormData();
-            
-            formData.append( 'file', file );
-
-            console.log( file );
+        formData = new FormData();
+        formData.append('file', file);
+        console.log(file);
 
             $.ajax({
                 url        : 'https://shareli.me/upload/',

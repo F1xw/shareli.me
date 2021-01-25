@@ -76,11 +76,11 @@
     </nav>
     <div class="content">
         <div class="description">
-            <h2 class="descripton-header">Fast. Simple. Free.</h2>
+            <h2 class="description-header">Fast. Simple. Free.</h2>
             <p class="description-text">An easy way to share your files.</h2>
         </div>
         <div class="upload-file">
-            <button class="upload-button rpl-btn rpl-primary rpl-rounded" id="upload"><i class="fas fa-upload"></i>&nbsp;Upload a file</button>
+            <button class="upload-button rpl-btn rpl-rounded" id="upload"><i class="fas fa-upload"></i>&nbsp;Upload a file</button>
             <br><p class="error-message text-danger"></p>
             <div class="upload-progress-container">
                 <div class="upload-progress"><span class="upload-percent"></span></div>
@@ -98,7 +98,7 @@
         </div>
     </div>
     <div class="footer">
-        <p>Copyright &copy; yeetLabs 2020</p>
+        <p>Copyright &copy; Florian Weissmeier 2020</p>
     </div>
     <form action="/files/upload/" method="post" class="upload-form"><input type="file" name="file" class="file-upload"></form>
     <div class="posssl">
