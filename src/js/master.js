@@ -36,9 +36,11 @@ $(document).ready(function () {
 
 $(document).ready(function () {
     $('.uri-input').keydown(function () {
-        if ($('.uri-input').val().length == 6) {
-            window.location.assign('/?'+$('.uri-input').val());
-        }
+        setTimeout(() => {
+            if ($('.uri-input').val().length == 6) {
+                window.location.assign('/?'+$('.uri-input').val());
+            }
+        }, 200);
     });
 });
 

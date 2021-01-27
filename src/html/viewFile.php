@@ -75,7 +75,7 @@ if (isset($data['user']) && $data['user'] !== '') {
             </li>
         <?php endif; ?>
         </ul>
-        <input class="w-5 mr-sm-2 uri-input my-2 my-lg-0" type="text" placeholder="File ID" aria-label="File ID">
+        <input class="w-5 mr-sm-2 uri-input my-2 my-lg-0" type="text" placeholder="File ID" aria-label="File ID" maxlength="6">
     </div>
     </nav>
     <div class="content">
