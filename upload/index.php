@@ -92,7 +92,7 @@ $response = array('');
 if ($success) {
     $response['success'] = 'true';
     $response['code'] = '201';
-    $respomse['uri'] = $uri;
+    $response['uri'] = $uri;
 }else{
     $response['success'] = 'false';
     $response['errors'] = $errors;
