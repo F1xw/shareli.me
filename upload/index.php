@@ -44,6 +44,8 @@ function generateRandomString($length) {
 $expiration = date('Y-m-d H:i:s', strtotime('+1 day', time())); 
 $uri = generateRandomString(6);
 
+$errors = array();
+
 if ($db_link = mysqli_connect('yeetlabs.de', 'shareli_me', 'Vrc41_z9', 'shareli_main')) {
     $query = "SELECT * FROM files WHERE uri = '$uri'";
 
@@ -71,10 +73,10 @@ if ($db_link = mysqli_connect('yeetlabs.de', 'shareli_me', 'Vrc41_z9', 'shareli_
                 $insert_query = "INSERT INTO files (uri, file_location, file_basename, upload_ip, expiration) VALUES ('$uri', '$target_path', '$file_basename', '$upload_ip', '$expiration')";
             }
             if ($exec_insert = mysqli_query($db_link, $insert_query)) {
-                echo $uri;
+                $success = true;
             }else{
                 unlink($target_path);
-                echo 'ERR_QUERY_FAILED';
+                array_push($errors, array('type' => 'EXPT_DB_QUERY_FAILED', 'code' => 500));
             }
             
         
@@ -84,6 +86,19 @@ if ($db_link = mysqli_connect('yeetlabs.de', 'shareli_me', 'Vrc41_z9', 'shareli_
 }else{
     echo 'ERR_DB_CONN_FAILED';
 }
+
+$response = array('');
+
+if ($success) {
+    $response['success'] = 'true';
+    $response['code'] = '201';
+    $respomse['uri'] = $uri;
+}else{
+    $response['success'] = 'false';
+    $response['errors'] = $errors;
+}
+
+print(json_encode($response));
 
 
 ?>
