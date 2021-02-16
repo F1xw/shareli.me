@@ -1,14 +1,14 @@
 <?php
 session_start();
 
-
-
 if (!isset($_SESSION['loggedin']) || $_SESSION['username'] == '') {
-    echo 'access denied';
-    exit;
+    header('location: /auth/?rd=/dashboard/');
+    exit();
 }
 
-if($link = mysqli_connect('yeetlabs.de', 'shareli_me', 'Vrc41_z9', 'shareli_main')) {
+include $_SERVER['DOCUMENT_ROOT'].'/src/conf.php';
+
+if($link = initDBConnection()) {
     $user = "'".$_SESSION['username']."'";
     $query = "SELECT * FROM files WHERE user = $user";
 

@@ -1,12 +1,13 @@
 <?php
 
     if (!isset($_GET['license'])) {
-        echo 'false_request';
+        echo 'EXPT_ARGS_MISSING';
     }else{
         
         $license = $_GET['license'];
+        include $_SERVER['DOCUMENT_ROOT'].'/src/conf.php';
 
-        if ($conn = mysqli_connect('localhost', 'flo', 'ihFuha7AG', 'share.it')) {
+        if ($conn = initDBConnection()) {
             $stmt = "SELECT * FROM licenses WHERE license = '$license'";
             if ($exec = mysqli_query($conn, $stmt)) {
                 if (mysqli_num_rows($exec) == 1) {
@@ -23,16 +24,16 @@
                             echo 'valid';
                         }
                     }else{
-                        echo 'db_fetch_err';
+                        echo 'EXPT_DB_FETCH';
                     }
                 }else{
                     echo 'invalid';
                 }
             }else{
-                echo 'db_query_err';
+                echo 'EXPT_DB_QUERY';
             }
         }else{
-            echo 'db_conn_err';
+            echo 'EXPT_DB_CONN';
         }
     }
 

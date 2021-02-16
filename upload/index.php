@@ -2,6 +2,7 @@
 
 session_start();
 
+include $_SERVER['DOCUMENT_ROOT'].'/src/conf.php';
 file_get_contents('https://shareli.me/del/');
 
 function generateRandomString($length) {
@@ -14,39 +15,40 @@ function generateRandomString($length) {
     return $randomString;
 }
 
-//  if(isset($_SESSION['loggedin']) && $_SESSION['username'] !== '') {
-//      $loggedin = true;
-//      $username = $_SESSION['username'];
-//      $license = $_SESSION['license'];
-//      $checkLicense = file_get_contents('https://shareli.me/auth/validate/?license='.$license);
+if(isset($_SESSION['loggedin']) && $_SESSION['username'] !== '') {
+    $loggedin = true;
+    $username = $_SESSION['username'];
+    $license = $_SESSION['license'];
+    $checkLicense = file_get_contents('https://shareli.me/auth/validate/?license='.$license);
 
-//      if ($checkLicense == 'valid') {
-//          if ($_FILES['file']['size'] > 5000000000) {
-//              exit;
-//          }else{
-//              $expiration = date('Y-m-d H:i:s', strtotime('+30 day', time())); 
-//          }
-//      }else{
-//          if ($_FILES['file']['size'] > 1000000000) {
-//              exit;
-//          }else{
-//              $expiration = date('Y-m-d H:i:s', strtotime('+1 day', time())); 
-//          }
-//      }
-//  }else{
-//      if ($_FILES['file']['size'] > 1000000000) {
-//          exit;
-//      }else{
-//          $expiration = date('Y-m-d H:i:s', strtotime('+1 day', time())); 
-//      }
-// }
+     
+    if ($checkLicense == 'valid') {
+        if ($_FILES['file']['size'] > 5000000000) {
+            exit;
+        }else{
+            $expiration = date('Y-m-d H:i:s', strtotime('+30 day', time())); 
+        }
+    }else{
+        if ($_FILES['file']['size'] > 1000000000) {
+            exit;
+        }else{
+            $expiration = date('Y-m-d H:i:s', strtotime('+1 day', time())); 
+        }
+    }
+}else{
+    if ($_FILES['file']['size'] > 1000000000) {
+        exit;
+    }else{
+        $expiration = date('Y-m-d H:i:s', strtotime('+1 day', time())); 
+    }
+}
 
 $expiration = date('Y-m-d H:i:s', strtotime('+1 day', time())); 
 $uri = generateRandomString(6);
 
 $errors = array();
 
-if ($db_link = mysqli_connect('yeetlabs.de', 'shareli_me', 'Vrc41_z9', 'shareli_main')) {
+if ($db_link = initDBConnection()) {
     $query = "SELECT * FROM files WHERE uri = '$uri'";
 
     $uploads_dir = $_SERVER['DOCUMENT_ROOT'].'/files/';
@@ -81,10 +83,10 @@ if ($db_link = mysqli_connect('yeetlabs.de', 'shareli_me', 'Vrc41_z9', 'shareli_
             
         
     }else{
-        echo 'ERR_TMP_MV_FAILED';
+        array_push($errors, array('type' => 'EXPT_UPLOAD_FAILED', 'code' => 500));
     }
 }else{
-    echo 'ERR_DB_CONN_FAILED';
+    array_push($errors, array('type' => 'EXPT_DB_CONN_FAILED', 'code' => 500));
 }
 
 $response = array('');

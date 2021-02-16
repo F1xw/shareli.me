@@ -1,8 +1,11 @@
 <?php
+
+include $_SERVER['DOCUMENT_ROOT'].'/src/conf.php';
+
 if ($_SERVER['REQUEST_URI'] !== '/dl/') {
     $uri_array = explode('?', $_SERVER['REQUEST_URI']);
     $uri = $uri_array[1];
-    if ($db_link = mysqli_connect('yeetlabs.de', 'shareli_me', 'Vrc41_z9', 'shareli_main')) {
+    if ($db_link = initDBConnection()) {
         $query = "SELECT * FROM files WHERE uri = '$uri'";
         if ($exec = mysqli_query($db_link, $query)) {
             if (mysqli_num_rows($exec) == 1) {

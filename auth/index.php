@@ -10,6 +10,9 @@ $email = $passwd = '';
 $email_err = $passwd_err = '';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+    include $_SERVER['DOCUMENT_ROOT'].'/src/conf.php';
+
     if (!isset($_POST['email_addr'])) {
         $email_err = 'Please enter your E-Mail adress.';
     }elseif(!isset($_POST['passwd'])){
@@ -24,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $email_err = 'No account found.';
         }
 
-        $db_link = mysqli_connect('yeetlabs.de', 'shareli_me', 'Vrc41_z9', 'shareli_main');
+        $db_link = initDBConnection();
         $query = "SELECT * FROM users WHERE email_addr = '$email_addr'";
 
         if (empty($passwd_err) && empty($email_err)) {

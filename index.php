@@ -8,10 +8,13 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['username'] == '') {
     $license = $_SESSION['license'];
 }
 
+include $_SERVER['DOCUMENT_ROOT'].'/src/conf.php';
+file_get_contents('https://shareli.me/del/');
+
 #If URL has file id
 if ($_SERVER['REQUEST_URI'] != '/' && $_SERVER['REQUEST_URI'] != '/?' && strpos($_SERVER['REQUEST_URI'], '/#') === false && strpos($_SERVER['REQUEST_URI'], '=') === false) {
     $uri = ltrim($_SERVER['REQUEST_URI'], '/?');
-    if ($db_link = mysqli_connect('yeetlabs.de', 'shareli_me', 'Vrc41_z9', 'shareli_main')) {
+    if ($db_link = initDBConnection()) {
         $query = "SELECT * FROM files WHERE uri = '$uri'";
         if ($exec = mysqli_query($db_link, $query)) {
             if (mysqli_num_rows($exec) == 1) {

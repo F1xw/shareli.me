@@ -2,7 +2,9 @@
 
 session_start();
 
-if ($conn = mysqli_connect('yeetlabs.de', 'shareli_me', 'Vrc41_z9', 'shareli_main')) {
+include $_SERVER['DOCUMENT_ROOT'].'/src/conf.php';
+
+if ($conn = initDBConnection()) {
     $stmt = "SELECT * FROM files";
     if ($exec = mysqli_query($conn, $stmt)) {
         while ($row = mysqli_fetch_assoc($exec)) {
