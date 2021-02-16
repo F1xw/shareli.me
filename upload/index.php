@@ -98,7 +98,7 @@ if ($success) {
     $response['errors'] = $errors;
 }
 
-print(json_encode($response));
+print(json_encode($response, 1));
 
 
 ?>

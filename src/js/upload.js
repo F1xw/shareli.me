@@ -40,16 +40,19 @@ function startUpload(file) {
                     return jqXHR;
                 },
                 success: function ( data ){
-                    if (data.includes("ERR_")) {
+                    data = JSON.parse(data);
+                    if (data.errors != undefined) {
                         window.location.assign("/?#err")
+                    }else{
+                        console.log('Upload complete.');
+                        console.log('URI is: '+data.uri);
+                        $('.upload-progress-container').hide();
+                        $('.cancle-upload-button').hide();
+                        $('.file-qr').html("<img src='/src/html/qr.php?fid="+data.uri+"'>");
+                        $('.file-qr').show();
+                        $('#file-uri').val('https://shareli.me/?'+data.uri);
+                        $('.file-uri').show();
                     }
-                    console.log('Upload complete.');
-                    $('.upload-progress-container').hide();
-                    $('.cancle-upload-button').hide();
-					$('.file-qr').html("<img src='/src/html/qr.php?fid="+data+"'>");
-					$('.file-qr').show();
-                    $('#file-uri').val('https://shareli.me/?'+data);
-                    $('.file-uri').show();
                 }
             } );
     }
