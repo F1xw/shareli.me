@@ -18,21 +18,24 @@ if ($_SERVER['REQUEST_URI'] != '/' && $_SERVER['REQUEST_URI'] != '/?' && strpos(
         $query = "SELECT * FROM files WHERE uri = '$uri'";
         if ($exec = mysqli_query($db_link, $query)) {
             if (mysqli_num_rows($exec) == 1) {
-                $data = mysqli_fetch_assoc($exec);
+                $data = mysqli_fetch_assoc($exec);        
                 $file_location = $data['file_location'];
                 $file_name_array = explode('.', $data['file_basename']);
                 $file_name = $file_name_array[0];
                 $file_extension = '.'.$file_name_array[1];
                 $file_basename = $file_name.$file_extension;
+                $file_basename_display = $file_name.$file_extension;
                 if (strlen($file_name) > 15) {
                     $file_basename_display = substr($file_name, 0, 15).'..'.$file_extension;
-                }else{
                     $file_basename_display = $file_basename;
                 }
                 #Include the HTML for viewing files
-                include 'src/html/viewFile.php';
-                
 
+                if ($data['maxDownloads'] > 0 && $data['downloads'] >=  $data['maxDownloads']) {
+                    include 'src/html/viewFileNoDl.php';
+                }else{
+                    include 'src/html/viewFile.php';
+                }     
             }else{
                 $error = ["ERR_INVALID_FID", "The requested File was not found."];
 

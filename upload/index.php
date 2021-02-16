@@ -50,7 +50,6 @@ $errors = array();
 
 if ($db_link = initDBConnection()) {
     $query = "SELECT * FROM files WHERE uri = '$uri'";
-
     $uploads_dir = $_SERVER['DOCUMENT_ROOT'].'/files/';
     $target_path = $uploads_dir.generateRandomString(15);
     $file_basename = basename($_FILES['file']['name']);
@@ -70,9 +69,19 @@ if ($db_link = initDBConnection()) {
 
             
             if ($loggedin = true) {
-                $insert_query = "INSERT INTO files (uri, file_location, file_basename, user, upload_ip, expiration) VALUES ('$uri', '$target_path', '$file_basename', '$username', '$upload_ip', '$expiration')";
+                if (isset($_POST['maxDL']) && is_int($_POST['maxDL'])) {
+                    $maxDL = $_POST['maxDL'];
+                    $insert_query = "INSERT INTO files (uri, file_location, file_basename, user, upload_ip, expiration, maxDownloads) VALUES ('$uri', '$target_path', '$file_basename', '$username', '$upload_ip', '$expiration', $maxDL)";
+                }else{
+                    $insert_query = "INSERT INTO files (uri, file_location, file_basename, user, upload_ip, expiration) VALUES ('$uri', '$target_path', '$file_basename', '$username', '$upload_ip', '$expiration')";
+                }
             }else{
-                $insert_query = "INSERT INTO files (uri, file_location, file_basename, upload_ip, expiration) VALUES ('$uri', '$target_path', '$file_basename', '$upload_ip', '$expiration')";
+                if (isset($_POST['maxDL']) && is_int($_POST['maxDL'])) {
+                    $maxDL = $_POST['maxDL'];
+                    $insert_query = "INSERT INTO files (uri, file_location, file_basename, upload_ip, expiration, maxDownloads) VALUES ('$uri', '$target_path', '$file_basename', '$upload_ip', '$expiration', $maxDL)";
+                }else{
+                    $insert_query = "INSERT INTO files (uri, file_location, file_basename, upload_ip, expiration) VALUES ('$uri', '$target_path', '$file_basename',  '$upload_ip', '$expiration')";
+                }
             }
             if ($exec_insert = mysqli_query($db_link, $insert_query)) {
                 $success = true;

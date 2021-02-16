@@ -10,6 +10,11 @@ if ($_SERVER['REQUEST_URI'] !== '/dl/') {
         if ($exec = mysqli_query($db_link, $query)) {
             if (mysqli_num_rows($exec) == 1) {
                 $data = mysqli_fetch_assoc($exec);
+
+                if ($data['maxDownloads'] > 0 && $data['downloads'] >=  $data['maxDownloads']) {
+                    die('Download failed! Maximum number of downloads reached.');
+                }
+
                 $file_location = $data['file_location'];
                 $file_basename = $data['file_basename'];
                 $dlval = $data['downloads'] + 1;
