@@ -23,6 +23,9 @@
         --text-secondary: rgb(192, 192, 192);
         --col-border: #f7ff80;
         --col-shadow: rgba(200, 255, 0, 0.25);
+        --link-main:  rgb(142, 145, 7);
+        --link-main-hover:  rgb(236, 240, 6);
+        --link-main-border:  rgba(236, 240, 6, 0.233);
     }
 
     .file-qr {
@@ -80,9 +83,26 @@ html, body {
 }
 
 .navbar a {
-    color: var(--text-main) !important;
+    color: var(--link-main) !important;
+    border: 4px solid transparent !important;
+    border-radius: 8px;
 }
 
+.navbar a.disabled {
+    border: 4px solid var(--link-main-border) !important;
+}
+
+.navbar a:not(.nav-link) {
+    color: var(--col-main) !important;
+}
+
+.navbar a:hover {
+    color: var(--link-main-hover) !important;
+}
+
+.navbar a:active {
+    border: 4px solid var(--link-main-border) !important;
+}
 .navbar #navContent {
     color: var(--text-main) !important;
 }

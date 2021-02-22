@@ -49,7 +49,7 @@
     <div class="collapse navbar-collapse" id="navContent">
         <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-            <a class="nav-link" href="#">Upload</a>
+            <a class="nav-link disabled" href="#">Upload</a>
         </li>
         <?php if (!isset($_SESSION['loggedin'])): ?>
             <li class="nav-item">
